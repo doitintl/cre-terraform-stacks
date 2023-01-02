@@ -4,7 +4,12 @@
 ## Description
 Backend stack with application infrastructure.
 
-## Connection to GKE control plane
+## Connection to private GKE control plane
+* Obtain credentials for GKE cluster.
+```
+gcloud container clusters get-credentials gke-gateway-poc --zone europe-west6-a --internal-ip
+```
+
 * Start an IAP proxy tunnel to tinyproxy service in IAP instance.
 ```
 gcloud compute start-iap-tunnel  iap-proxy 8888 --local-host-port=localhost:8888 --zone europe-west6-a
@@ -14,6 +19,8 @@ gcloud compute start-iap-tunnel  iap-proxy 8888 --local-host-port=localhost:8888
 ```
 export HTTPS_PROXY=localhost:8888
 ```
+
+* Use kubectl as usual.
 
 ## Prerequisites
 * [Terraform 0.13+](https://developer.hashicorp.com/terraform/downloads) Tool that manages IaC (infrastructure-as-code) in diverse public cloud providers and tools.
