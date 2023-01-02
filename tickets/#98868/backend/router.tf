@@ -4,7 +4,7 @@
 #############################################################################
 resource "google_compute_router" "vpc_router" {
   count   = var.gke_cluster_enable_private_nodes ? 1 : 0
-  name    = "${var.vpc_name}-router"
+  name    = "${local.vpc_name}-router"
   region  = var.region
   network = local.vpc_network_id
 }
