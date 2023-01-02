@@ -25,7 +25,7 @@ module "gke" {
   region             = local.gke_cluster_region
   zones              = local.gke_cluster_zones
   description        = "GKE ${var.gke_cluster_regional ? "regional" : "zonal"} cluster ${var.gke_cluster_name} for ticket ${var.ticket_number}."
-  network            = local.vpc_network_id
+  network            = local.vpc_network_name
   subnetwork         = "subnet-gke-europe-west6"
   ip_range_pods      = "subnet-gke-europe-west6-pods"
   ip_range_services  = "subnet-gke-europe-west6-services"

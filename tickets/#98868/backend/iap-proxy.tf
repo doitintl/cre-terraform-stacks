@@ -9,7 +9,7 @@ apt update
 apt install -y tinyproxy
 
 # https://serverfault.com/questions/1055510/tinyproxy-error-unable-to-connect-to-the-server-access-denied
-grep -qxF 'Allow localhost' /etc/tinyproxy/tinyproxy.conf || echo 'Allow localhost' >> /etc/tinyproxy/tinyproxy.conf
+grep -qxF 'Allow 35.235.240.0/20' /etc/tinyproxy/tinyproxy.conf || echo 'Allow 35.235.240.0/20' >> /etc/tinyproxy/tinyproxy.conf
 systemctl restart tinyproxy
 EOF
 

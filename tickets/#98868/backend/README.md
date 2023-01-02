@@ -4,6 +4,17 @@
 ## Description
 Backend stack with application infrastructure.
 
+## Connection to GKE control plane
+* Start an IAP proxy tunnel to tinyproxy service in IAP instance.
+```
+gcloud compute start-iap-tunnel  iap-proxy 8888 --local-host-port=localhost:8888 --zone europe-west6-a
+```
+
+* Set HTTPS_PROXY environment variable to point to the localhost port of your tunnel.
+```
+export HTTPS_PROXY=localhost:8888
+```
+
 ## Prerequisites
 * [Terraform 0.13+](https://developer.hashicorp.com/terraform/downloads) Tool that manages IaC (infrastructure-as-code) in diverse public cloud providers and tools.
 * [terraform-docs](https://github.com/terraform-docs/terraform-docs/releases/) Generate documentation for Terraform stacks.
@@ -43,6 +54,7 @@ Backend stack with application infrastructure.
 | [google_compute_router.vpc_router](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_router) | resource |
 | [google_compute_router_nat.vpc_router_nat](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_router_nat) | resource |
 | [google_compute_subnetwork.subnet_iap](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork) | resource |
+| [google_filestore_instance.basic_hdd](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/filestore_instance) | resource |
 | [google_compute_zones.available](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_zones) | data source |
 | [terraform_remote_state.baseline](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
