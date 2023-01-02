@@ -25,7 +25,7 @@ Baseline stack with network infrastructure.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | ~> 4.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.47.0 |
 
 ## Modules
 

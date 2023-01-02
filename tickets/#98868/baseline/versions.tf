@@ -23,7 +23,7 @@ terraform {
   }
   backend "gcs" {
     bucket = "04a17e60ca0de333-tf-state-bucket"
-    prefix = "pocs/gke-gateway"
+    prefix = "tickets/#98868/baseline"
   }
   required_version = ">= 0.13"
 }
