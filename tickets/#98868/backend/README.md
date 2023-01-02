@@ -10,7 +10,7 @@ Backend stack with application infrastructure.
 gcloud container clusters get-credentials gke-gateway-poc --zone europe-west6-a --internal-ip
 ```
 
-* Start an IAP proxy tunnel to tinyproxy service in IAP instance.
+* Start an IAP tunnel to tinyproxy service in IAP instance.
 ```
 gcloud compute start-iap-tunnel  iap-proxy 8888 --local-host-port=localhost:8888 --zone europe-west6-a
 ```
