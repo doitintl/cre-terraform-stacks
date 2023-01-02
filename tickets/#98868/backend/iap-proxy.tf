@@ -27,7 +27,7 @@ resource "google_compute_subnetwork" "subnet_iap" {
 resource "google_compute_firewall" "iap_tcp_forwarding" {
   count   = var.gke_cluster_enable_private_endpoint ? 1 : 0
   name    = "allow-ingress-from-iap"
-  network = data.terraform_remote_state.baseline.vpc_network_id
+  network = local.vpc_network_id
 
   direction = "INGRESS"
 
