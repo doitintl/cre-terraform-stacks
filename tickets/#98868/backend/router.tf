@@ -6,7 +6,7 @@ resource "google_compute_router" "vpc_router" {
   count   = var.gke_cluster_enable_private_nodes ? 1 : 0
   name    = "${var.vpc_name}-router"
   region  = var.region
-  network = data.terraform_remote_state.baseline.vpc_network_id
+  network = local.vpc_network_id
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resource/compute_router_nat

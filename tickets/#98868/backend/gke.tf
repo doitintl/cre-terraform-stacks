@@ -8,6 +8,7 @@ data "google_compute_zones" "available" {
 }
 
 locals {
+  vpc_network_id                 = data.terraform_remote_state.baseline.outputs.vpc_network_id
   gke_cluster_zones              = var.gke_cluster_regional ? data.google_compute_zones.available.names : [var.zone]
   gke_cluster_region             = var.gke_cluster_regional ? var.region : null
   gke_master_authorized_networks = var.gke_cluster_enable_private_endpoint ? [{ display_name = "allow-iap", cidr_block = var.iap_proxy_subnet_cidr_range }] : var.gke_cluster_master_authorized_networks
@@ -23,7 +24,7 @@ module "gke" {
   region             = local.gke_cluster_region
   zones              = local.gke_cluster_zones
   description        = "GKE ${var.gke_cluster_regional ? "regional" : "zonal"} cluster ${var.gke_cluster_name} for ticket ${var.ticket_number}."
-  network            = data.terraform_remote_state.baseline.vpc_network_id
+  network            = local.vpc_network_id
   subnetwork         = "subnet-gke-europe-west6"
   ip_range_pods      = "subnet-gke-europe-west6-pods"
   ip_range_services  = "subnet-gke-europe-west6-services"

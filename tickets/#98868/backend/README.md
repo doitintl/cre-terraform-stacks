@@ -25,7 +25,7 @@ Backend stack with application infrastructure.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | ~> 4.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.47.0 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules

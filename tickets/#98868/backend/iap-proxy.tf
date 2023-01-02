@@ -19,7 +19,7 @@ resource "google_compute_subnetwork" "subnet_iap" {
   count                    = var.gke_cluster_enable_private_endpoint ? 1 : 0
   name                     = "subnet-iap-${var.region}"
   ip_cidr_range            = var.iap_proxy_subnet_cidr_range
-  network                  = data.terraform_remote_state.baseline.vpc_network_id
+  network                  = local.vpc_network_id
   private_ip_google_access = "true"
   region                   = var.region
 }
@@ -59,7 +59,7 @@ resource "google_compute_instance" "iap_proxy" {
   # because we're setting a count on the iap_subnet,
   # we now have to reference it with an index as well
   network_interface {
-    network    = data.terraform_remote_state.baseline.vpc_network_id
+    network    = local.vpc_network_id
     subnetwork = google_compute_subnetwork.subnet_iap[count.index].name
   }
 
