@@ -22,6 +22,16 @@ export HTTPS_PROXY=localhost:8888
 
 * Use kubectl as usual.
 
+## Install Kubernetes NFS Subdir External Provisioner
+
+* [Documentation](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner#with-helm)
+```
+$ helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+$ helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+    --set nfs.server=10.220.137.2 \
+    --set nfs.path=/share1
+```
+
 ## Prerequisites
 * [Terraform 0.13+](https://developer.hashicorp.com/terraform/downloads) Tool that manages IaC (infrastructure-as-code) in diverse public cloud providers and tools.
 * [terraform-docs](https://github.com/terraform-docs/terraform-docs/releases/) Generate documentation for Terraform stacks.
