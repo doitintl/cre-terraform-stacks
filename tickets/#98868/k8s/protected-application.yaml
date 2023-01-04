@@ -1,0 +1,21 @@
+kind: ProtectedApplication
+apiVersion: gkebackup.gke.io/v1alpha1
+metadata:
+  name: nginx
+  namespace: webserver
+spec:
+  resourceSelection:
+    type: Selector
+    selector:
+      matchLabels:
+        app: nginx
+  components:
+  - name: nginx-app
+    resourceKind: Deployment
+    resourceNames: ["nginx-deployment"]
+    strategy:
+      type: BackupAllRestoreAll
+      backupAllRestoreAll:
+        volumeSelector:
+          matchLabels:
+            backup-include: "true"
